@@ -92,7 +92,7 @@ RUN chmod +x /usr/bin/celery-cmd
 
 RUN pip install --upgrade --no-cache-dir  --src /usr/src -r requirements.txt
 RUN pip install -r app_requirements.txt
-RUN pip install --upgrade  -e .
+RUN pip install --upgrade  -e . && numpy==1.23
 
 COPY --from=frontend-build /usr/src/static /usr/src/iws/iws/frontend/static
 COPY --from=frontend-build /usr/src/webpack-stats.json /usr/src/iws/iws/frontend/webpack-stats.json

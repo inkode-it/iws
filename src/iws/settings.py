@@ -291,4 +291,5 @@ WEBPACK_LOADER = {
 
 TEMPLATES[0]['OPTIONS']['context_processors'].append('iws.mapstore_extensions.context_processors.mapstore_extensions')
 
-LAYERDATA_ROOT = os.path.join(PROJECT_ROOT, 'storage', 'layerdata')
+LAYERDATA_ROOT = '/mnt/volumes/statics/layerdata'
+LAYERDATA_URL = SITEURL+'static/layerdata/'

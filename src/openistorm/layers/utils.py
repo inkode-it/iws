@@ -67,7 +67,7 @@ class WmsQueryNew:
             "request": "GetCapabilities",
         }
         layerFileName = 'tmes/TMES_' + dataset + '_' + self.formatted_date + '.nc' if not self.history else self.history_datasets[dataset]
-        url = settings.THREDDS_URL + 'thredds/wms/' + layerFileName + '?' + urllib.urlencode(capabilitiesOptions)
+        url = settings.THREDDS_URL + 'thredds/wms/' + layerFileName + '?' + urllib.parse.urlencode(capabilitiesOptions)
         r = requests.get(url=url)
         times = xmltodict.parse(r.content)['WMS_Capabilities']['Capability']['Layer']['Layer']['Layer'][0]['Dimension']['#text'].split(',')
         times = filter(lambda x: not x.startswith('-'), times)
@@ -327,7 +327,7 @@ class WmsQueryNew:
             "TIME": time_from.isoformat()[0:19] + '.000Z' if time_to is None else time_from.isoformat()[0:19] + '.000Z' + '/' + time_to.isoformat()[0:19] + '.000Z',
             "QUERY_LAYERS": layer,
         })
-        url = settings.THREDDS_URL + 'thredds/wms/' + layerFileName + '?' + urllib.urlencode(options)
+        url = settings.THREDDS_URL + 'thredds/wms/' + layerFileName + '?' + urllib.parse.urlencode(options)
         r = requests.get(url=url)
         queryData = xmltodict.parse(r.content)
         if not raw:

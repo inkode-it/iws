@@ -35,7 +35,7 @@ RUN apt-get update -y && apt-get upgrade -y
 
 # Prepraing dependencies
 RUN apt-get install -y \
-    libgdal-dev libpq-dev libxml2-dev \
+    gdal-bin libgdal-dev libpq-dev libxml2-dev \
     libxml2 libxslt1-dev zlib1g-dev libjpeg-dev \
     libmemcached-dev libldap2-dev libsasl2-dev libffi-dev
 
